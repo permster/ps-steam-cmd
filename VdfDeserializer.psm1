@@ -259,7 +259,7 @@ Class VdfTextReader
     {
         while ($this.EnsureBuffer())
         {
-            if ($this._charBuffer[++$this._charPos] == '\n')
+            if ($this._charBuffer[++$this._charPos] -eq '\n')
             {
                 return $true;
             }
