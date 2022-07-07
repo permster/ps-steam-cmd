@@ -98,6 +98,10 @@ Class SteamCmd
         $appInfoContent = $this.CleanAppInfoPrint($appId, $appInfoContent);
         Remove-Item -Path $tmpFile;
 
+        if([string]::IsNullOrWhiteSpace($appInfoContent)) {
+            throw 'No app info for AppID $appId found';
+        }
+
         $vdf = [VdfDeserializer]::new();
         $appInfo = $vdf.Deserialize($appInfoContent);
         return $appInfo;
